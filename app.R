@@ -10,5 +10,9 @@
 library(shiny)
 source("ui.R")
 source("server.R")
+
+# Ex de d'app shiny :
+# runExample("06_tabsets")
+
 # Run the application
-shinyApp(ui = ui, server = server)
+# shinyApp(ui = ui, server = server)
