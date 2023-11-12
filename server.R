@@ -13,6 +13,8 @@ library(tidyr)
 library(ggplot2)
 library(leaflet)
 library(rnaturalearth)
+library(rnaturalearthdata)
+
 
 
 df <- read.csv("datasets/energy-cleaned-dataset.csv")
