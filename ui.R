@@ -121,8 +121,8 @@ shinyUI(
                                    ))
                                  )),
              navbarMenu("Guides",
-                        tabPanel("User guide")),
-                        tabPanel("Developer guide")
+                        tabPanel("User guide"),
+                        tabPanel("Developer guide"))
              
   )
 
