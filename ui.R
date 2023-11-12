@@ -121,8 +121,8 @@ shinyUI(
                                    ))
                                  )),
              navbarMenu("Guides",
-                        tabPanel("User guide", source(file = "pages/userGuide.R")),
-                        tabPanel("Developer guide", source(file = "pages/developerGuide.R")))
+                        tabPanel("User guide")),
+                        tabPanel("Developer guide")
              
   )
 
