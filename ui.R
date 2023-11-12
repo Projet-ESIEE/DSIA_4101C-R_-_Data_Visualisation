@@ -1,22 +1,35 @@
-# Define UI for application that draws a histogram
-ui <- fluidPage(
+library(shiny)
+library(plotly)
+library(leaflet)
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
+df <- read.csv("datasets/energy-cleaned-dataset.csv")
+# Define UI for application that draws a choropleth map
+shinyUI(fluidPage(
+  
+  # Application title
+  titlePanel(
+    textOutput(outputId = "title")
+  ),
+  
+  # Main panel
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(inputId = "years",
+                  label = "Year",
+                  min = 2000,
+                  max = 2020,
+                  step = 1,
+                  value = 2000,
+                  animate = FALSE),
+      selectInput(inputId = "continent",
+                  label = "Continent",
+                  selected = "Europe",
+                  choices = unique(df$Continent)),
+      plotOutput("pie"),
+    ),
+    mainPanel(
+    leafletOutput(outputId = "map",),
+    plotOutput(outputId="histo", height = 300)
     )
-)
+  )
+))
