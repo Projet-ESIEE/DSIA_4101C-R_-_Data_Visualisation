@@ -8,7 +8,7 @@
 Check the `requirement.txt` to get the list of dependency and the version used for running the app.
 
 
-`` to install all the dependency.
+`install.packages()` to install all the dependency.
 
 
 ### Launch the app

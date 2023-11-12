@@ -58,12 +58,15 @@ flowchart TD
 subgraph "Run the App"
   main{{serveur.R}} x---x ui.R{{ui.R}}
   ui.R{{ui.R}} x---x main{{serveur.R}}
-  ui.R{{ui.R}} -- plots --> heatmap[/heatmap/]
+  ui.R{{ui.R}} -- plots ---> barchart[/barchart/]
   ui.R{{ui.R}} -- plots ---> histo[/histo/]
+  ui.R{{ui.R}} -- plots ---> scatter[/scatter/]
   ui.R{{ui.R}} -- plots ---> line[/line/]
+  ui.R{{ui.R}} -- plots ---> pie[/pie/]
+  
   ui.R{{ui.R}} -- display --> readme.md
-
   ui.R{{ui.R}} -- display --> userguide.md
+  
   ui.R{{ui.R}} -.query .-> df_energy_cleaned
 
 end

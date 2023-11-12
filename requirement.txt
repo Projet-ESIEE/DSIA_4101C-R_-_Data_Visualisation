@@ -1,0 +1,8 @@
+shiny==1.7.5.1
+ggplot2==3.4.4
+rnaturalearth==0.3.4
+rnaturalearth==0.1.0
+tidyr==1.3.0
+dplyr==1.1.3
+leaflet==2.2.0
+plotly==4.10.3
