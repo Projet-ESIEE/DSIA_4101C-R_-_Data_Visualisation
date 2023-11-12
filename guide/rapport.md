@@ -19,4 +19,5 @@ On constate aussi que hors Europe, il y a une vraie prédominance de l'énergie 
 
 #### Pour faire une analyse plus en détail : 
 Nous regardons la consommation/hab pour une année donnée en triant les pays en fonction de leur IDH. L'intérêt est de voir outre le nombre d'habitants s'il y a bien un rapport entre l'IDH et la production d'énergie. 
-On constate que : 
+On constate que les données sont extrêmement corrélées ! Avec une échelle en $log_{10}$ la distribution est quasi-linéaire. 
+Cela veut dire que quand l'IDH grandit, la consommation grandit d'un facteur 10. De manière attendue aussi la 
