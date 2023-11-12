@@ -134,7 +134,7 @@ function(input, output, session) {
   })
   
   
-  output$histo <- renderPlot({
+  output$histogram <- renderPlot({
     df_test <- subset(df, Year==input$years)
     
     fig <- ggplot(df_test, aes(x = HDI, fill = Continent))+

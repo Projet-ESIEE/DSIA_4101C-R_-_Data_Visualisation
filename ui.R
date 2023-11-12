@@ -90,7 +90,19 @@ shinyUI(
 "))),
 #### Map & histogram ####
              navbarMenu("Analytics",
-                        # tabPanel("missing value", source(file = "analytics1.R")),
+                        
+                        tabPanel("IDH & Electricity", 
+                                 fluidPage(mainPanel(sliderInput(inputId = "years",
+                                                                 label = "Year",
+                                                                 min = 2000,
+                                                                 max = 2020,
+                                                                 step = 1,
+                                                                 value = 2000,
+                                                                 animate = TRUE,
+                                                                 ticks = TRUE),
+                                                     plotlyOutput(outputId="point"),
+                                                     plotOutput(outputId="histogram")))),
+
                         tabPanel("Map & histogram",
                                  fluidPage(
 
@@ -142,9 +154,7 @@ shinyUI(
                                         "
                                  ))),
                         tabPanel("Developer guide",
-                                 HTML(markdown(
-                                   "
-                                          The purpose is to allows you to understand the architecture of the code and modify or extend it.
+                                 HTML(markdown("The purpose is to allows you to understand the architecture of the code and modify or extend it.
 
                                           ---
 
