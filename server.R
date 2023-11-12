@@ -111,5 +111,39 @@ function(input, output, session) {
       geom_bar(stat = "sum", aes(fill = `Electricity mode`), show.legend = TRUE) +
       labs(y = "" )
   })
+  
+  output$point <- renderPlotly({
+    
+    world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+      select("iso_a2", "pop_est")
+    df_plot <- merge.data.frame(world, df, by.x = "iso_a2", by.y = "ISO2") %>%
+      select("Country", "Year", "Total electricity", "pop_est", "HDI", "Continent")
+    
+    df_plot$Electricity_per_capita <- df_plot$`Total electricity` / df_plot$pop_est * 1000000000
+    df_plot <- subset(df_plot, Year == input$years & Country != "Namibia")
+    
+    fig <- ggplot(df_plot, aes(x = HDI, y = Electricity_per_capita, text = Country, fill = Continent)) +
+      geom_point(aes(color=Continent)) +
+      labs(title = "Electricity per capita vs IDH in 2020",
+           x = "IDH",
+           y = "Electricity per capita (Wh)") +
+      scale_y_log10()
+    
+    fig <- ggplotly(fig, tooltip = c("text"))
+    return(fig)
+  })
+  
+  
+  output$histo <- renderPlot({
+    df_test <- subset(df, Year==input$years)
+    
+    fig <- ggplot(df_test, aes(x = HDI, fill = Continent))+
+      geom_histogram(binwidth = 0.05, alpha = 0.7)+
+      facet_wrap(~Continent, scales = "free_y") +
+      labs(title = "IDH repartition per continent",
+           x = "HDI",
+           y = "")
+    fig
+  })
 }
 

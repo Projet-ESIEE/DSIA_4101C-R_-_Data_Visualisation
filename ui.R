@@ -1,5 +1,6 @@
 library(shiny)
 library(leaflet)
+library(plotly)
 
 df <- read.csv("datasets/energy-cleaned-dataset.csv")
 # Define UI for application that draws a choropleth map
@@ -89,7 +90,6 @@ shinyUI(
 "))),
 #### Map & histogram ####
              navbarMenu("Analytics",
-                        # tabPanel("missing value", source(file = "analytics1.R")),
                         tabPanel("Map & histogram",
                                  fluidPage(
 
@@ -119,11 +119,24 @@ shinyUI(
                                      plotOutput(outputId="histo", height = 300)
                                      )
                                    ))
-                                 )),
-             navbarMenu("Guides",
-                        tabPanel("User guide"),
-                        tabPanel("Developer guide"))
-             
+                                 ),
+                        tabPanel("IDH & Electricity", 
+                                 fluidPage(mainPanel(sliderInput(inputId = "years",
+                                                                 label = "Year",
+                                                                 min = 2000,
+                                                                 max = 2020,
+                                                                 step = 1,
+                                                                 value = 2000,
+                                                                 animate = TRUE,
+                                                                 ticks = TRUE),
+                                    plotlyOutput(outputId="point"),
+                                    # plotOutput(outputId="histo")
+                                    ))),
+               ),
+               navbarMenu("Guides",
+                          tabPanel("User guide"),
+                          tabPanel("Developer guide"))
+                     
   )
 
 )
