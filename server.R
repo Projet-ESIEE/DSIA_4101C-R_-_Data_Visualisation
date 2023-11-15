@@ -120,7 +120,7 @@ function(input, output, session) {
       select("Country", "Year", "Total electricity", "pop_est", "HDI", "Continent")
     
     df_plot$Electricity_per_capita <- df_plot$`Total electricity` / df_plot$pop_est * 1000000000
-    df_plot <- subset(df_plot, Year == input$years & Country != "Namibia")
+    df_plot <- subset(df_plot, Year == input$years2 & Country != "Namibia")
     
     fig <- ggplot(df_plot, aes(x = HDI, y = Electricity_per_capita, text = Country, fill = Continent)) +
       geom_point(aes(color=Continent)) +
@@ -135,7 +135,7 @@ function(input, output, session) {
   
   
   output$histogram <- renderPlot({
-    df_test <- subset(df, Year==input$years)
+    df_test <- subset(df, Year==input$years2)
     
     fig <- ggplot(df_test, aes(x = HDI, fill = Continent))+
       geom_histogram(binwidth = 0.05, alpha = 0.7)+

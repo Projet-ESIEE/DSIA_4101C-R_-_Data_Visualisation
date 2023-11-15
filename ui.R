@@ -88,11 +88,11 @@ shinyUI(
                 - **Report** : which highlights the main conclusions drawn from the data.
                 - **Developer Guide** : which allows you to understand the architecture of the code and modify or extend it.
 "))),
-#### Map & histogram ####
+#### IDH & Electricity ####
              navbarMenu("Analytics",
                         
                         tabPanel("IDH & Electricity", 
-                                 fluidPage(mainPanel(sliderInput(inputId = "years",
+                                 fluidPage(mainPanel(sliderInput(inputId = "years2",
                                                                  label = "Year",
                                                                  min = 2000,
                                                                  max = 2020,
@@ -102,7 +102,8 @@ shinyUI(
                                                                  ticks = TRUE),
                                                      plotlyOutput(outputId="point"),
                                                      plotOutput(outputId="histogram")))),
-
+#### Map & histogram ####
+                        
                         tabPanel("Map & histogram",
                                  fluidPage(
 
