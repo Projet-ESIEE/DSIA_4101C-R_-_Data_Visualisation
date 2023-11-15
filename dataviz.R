@@ -11,6 +11,7 @@ library(plotly)
 library(rnaturalearth)
 
 
+
 df <- read.csv("datasets/energy-cleaned-dataset.csv")
 # Calcul du total d'électricité
 df <- df %>%
